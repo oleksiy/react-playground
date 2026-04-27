@@ -2,16 +2,11 @@ import { useState } from "react";
 
 export default function App() {
   const [count, setCount] = useState(0);
-  let show = false;
-  let showlow = false;
+  let statusMsg = "";
   if (count >= 10) {
-    show = true;
-    showlow = false;
-  }
-
-  if (count < 0){
-    showlow = true;
-    show = false;
+    statusMsg = "TOO HIGH 🔥";
+  } else if (count < 0) {
+    statusMsg = "too low 🧊";
   }
 
 
@@ -33,8 +28,7 @@ export default function App() {
         <button onClick={() => setCount(0)}>
           RESET ALL
         </button>
-        {show && <p>TOO HIGH 🔥</p>}
-        {showlow && <p>too low 🥶</p>}
+        {statusMsg && <p>{statusMsg}</p>}
       </div>
   );
 }
