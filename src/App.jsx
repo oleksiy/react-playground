@@ -2,13 +2,8 @@ import { useState } from "react";
 
 export default function App() {
   const [count, setCount] = useState(0);
-  let statusMsg = "";
-  if (count >= 10) {
-    statusMsg = "TOO HIGH 🔥";
-  } else if (count < 0) {
-    statusMsg = "too low 🧊";
-  }
 
+  const message = count >= 10 ? "TOO HIGH 🔥" : count < 0 ? "too low 🧊" : "";
 
   return (
       <div style={{ padding: 20 }}>
@@ -17,18 +12,18 @@ export default function App() {
         <p>Count is: {count}</p>
 
 
-        <button onClick={() => setCount(count + 1)}>
+        <button onClick={() => setCount(prev => prev + 1)}>
           Increment
         </button>
 
-        <button onClick={() => setCount(count - 1)}>
+        <button onClick={() => setCount(prev => prev - 1)}>
           Decrement
         </button>
 
         <button onClick={() => setCount(0)}>
           RESET ALL
         </button>
-        {statusMsg && <p>{statusMsg}</p>}
+        {<p>{message}</p>}
       </div>
   );
 }
