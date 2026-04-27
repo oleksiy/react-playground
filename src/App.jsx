@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function App() {
   const [count, setCount] = useState(0);
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(0);
   const message = count >= 10 ? "TOO HIGH 🔥" : count < 0 ? "too low 🧊" : "";
 
   return (
