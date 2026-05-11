@@ -51,9 +51,9 @@ export default function App() {
             />
             <br />
             <MyButton />
-            <ul>
+            <ol>
                 {renderedList}
-            </ul>
+            </ol>
         </div>
     );
 }
