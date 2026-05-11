@@ -2,8 +2,11 @@ import { useState } from "react";
 import heroImg from './assets/profile-pic.png'
 
 function MyButton() {
+    function handleClick() {
+        alert("You clicked! Idiot!");
+    }
     return(
-        <button>My Button</button>
+        <button onClick={handleClick}>My Button</button>
     );
 }
 
