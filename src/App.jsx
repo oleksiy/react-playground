@@ -1,30 +1,44 @@
 import { useState } from "react";
+import heroImg from './assets/profile-pic.png'
+
+function MyButton() {
+    return(
+        <button>My Button</button>
+    );
+}
+
+function AdminPanel() {
+    return(<h1>Admin Panel</h1>);
+}
+
+function LoginForm() {
+    return(<h1>Login Form</h1>);
+}
+
+const user = {
+    name: "Johan Benderschmidt",
+    imageUrl: heroImg
+}
+let isLoggedIn = false;
 
 export default function App() {
-  const [count, setCount] = useState(0);
-  const [inputValue, setInputValue] = useState(0);
-  const message = count >= 10 ? "TOO HIGH 🔥" : count < 0 ? "too low 🧊" : "";
-
-  return (
-      <div style={{ padding: 20 }}>
-          <h1>Counter</h1>
-          <p>Count is: {count}</p>
-
-          <button onClick={() => setCount(prev => prev + 1)}>
-              Increment
-          </button>
-
-          <button onClick={() => setCount(prev => prev - 1)}>
-              Decrement
-          </button>
-
-
-          <button onClick={() => setCount(0)}>
-              RESET ALL
-          </button>
-          <p>{message}</p>
-          <input type="number" value={inputValue} onChange={e => setInputValue(e.target.value)}/>
-          <button onClick={() => setCount(Number(inputValue))}>Set Count</button>
-      </div>
-  );
+    let content;
+    if (isLoggedIn) {
+        content = <AdminPanel />
+    } else {
+        content = <LoginForm />
+    }
+    return (
+        <div className="App">
+            {content}
+            <h1>UX Designer Profile</h1>
+            <h1>{user.name}</h1>
+            <img className="profile-pic"
+                 src={user.imageUrl}
+                 alt={'Photo of ' + user.name}
+            />
+            <br />
+            <MyButton />
+        </div>
+    );
 }
