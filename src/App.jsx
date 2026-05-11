@@ -2,11 +2,13 @@ import { useState } from "react";
 import heroImg from './assets/profile-pic.png'
 
 function MyButton() {
+    const [count, setCount] = useState(0);
     function handleClick() {
-        alert("You clicked! Idiot!");
+        setCount(count + 1);
+        alert("You clicked! Idiot! " + count + " times!");
     }
     return(
-        <button onClick={handleClick}>My Button</button>
+        <button onClick={handleClick}>My Button {count} times</button>
     );
 }
 
