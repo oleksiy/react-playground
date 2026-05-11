@@ -62,6 +62,7 @@ export default function App() {
             />
             <br />
             <MyButton count={count} onClick={handleClick} />
+            <br/>
             <MyButton count={count} onClick={handleClick} />
             <ol>
                 {renderedList}
