@@ -1,14 +1,11 @@
 import { useState } from "react";
 import heroImg from './assets/profile-pic.png'
 
-function MyButton() {
-    const [count, setCount] = useState(0);
-    function handleClick() {
-        setCount(count + 1);
-        alert("You clicked! Idiot! " + count + " times!");
-    }
+function MyButton({count, onClick}) {
     return(
-        <button onClick={handleClick}>My Button {count} times</button>
+        <button onClick={onClick}>
+            My Button {count} time(s)
+        </button>
     );
 }
 
@@ -39,6 +36,15 @@ const renderedList = portfolio_pieces.map(portfolio_piece => (
 ));
 
 export default function App() {
+    //move the state of the counter up so it's applied to both buttons and shared
+    const [count, setCount] = useState(0);
+    function handleClick() {
+        setCount(count + 1);
+        if (count === 100) {
+            alert("You clicked! Idiot! " + count + " times!");
+        }
+    }
+
     let content;
     if (isLoggedIn) {
         content = <AdminPanel />
@@ -55,7 +61,8 @@ export default function App() {
                  alt={'Photo of ' + user.name}
             />
             <br />
-            <MyButton />
+            <MyButton count={count} onClick={handleClick} />
+            <MyButton count={count} onClick={handleClick} />
             <ol>
                 {renderedList}
             </ol>
