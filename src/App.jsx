@@ -21,6 +21,18 @@ const user = {
 }
 let isLoggedIn = false;
 
+const portfolio_pieces = [
+    {id: 1, title: "First Design"},
+    {id: 2, title: "Second Design"},
+    {id: 3, title: "Third Design"}
+];
+
+const renderedList = portfolio_pieces.map(portfolio_piece => (
+   <li key={portfolio_piece.id}>
+       {portfolio_piece.title}
+   </li>
+));
+
 export default function App() {
     let content;
     if (isLoggedIn) {
@@ -39,6 +51,9 @@ export default function App() {
             />
             <br />
             <MyButton />
+            <ul>
+                {renderedList}
+            </ul>
         </div>
     );
 }
