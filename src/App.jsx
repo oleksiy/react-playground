@@ -1,5 +1,6 @@
 import { useState } from "react";
 import heroImg from './assets/profile-pic.png'
+import {Link} from "react-router-dom";
 
 function MyButton({count, onClick}) {
     return(
@@ -67,6 +68,7 @@ export default function App() {
             <ol>
                 {renderedList}
             </ol>
+            <Link to={"/tictactoe"}>Go to Tic Tac Toe</Link>
         </div>
     );
 }
