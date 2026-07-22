@@ -4,6 +4,11 @@ export default function Board() {
     const [xIsNext, setXIsNext] = useState(true);
     function handleClick(i) {
         const nextSquares = squares.slice();
+
+        if (squares[i]){
+            return;
+        }
+
         if(xIsNext) {
             nextSquares[i] = "X";
 
