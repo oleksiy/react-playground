@@ -5,9 +5,18 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>react-playground</title>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdpBmotAAAAAFbDg65E4dbaxwBfBj-_KYt0unlJ"></script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      function onClick(e) {
+        e.preventDefault();
+        grecaptcha.enterprise.ready(async () => {
+          const token = await grecaptcha.enterprise.execute('6LdpBmotAAAAAFbDg65E4dbaxwBfBj-_KYt0unlJ', {action: 'LOGIN'});
+        });
+      }
+    </script>
   </body>
 </html>
