@@ -1,30 +1,52 @@
-import { useState } from "react";
+import { useState } from 'react';
+export default function Board() {
+    const [squares, setSquares] = useState(Array(9).fill(null))
+    const [xIsNext, setXIsNext] = useState(true);
+    function handleClick(i) {
+        const nextSquares = squares.slice();
 
-export default function App() {
-  const [count, setCount] = useState(0);
-  const [inputValue, setInputValue] = useState(0);
-  const message = count >= 10 ? "TOO HIGH 🔥" : count < 0 ? "too low 🧊" : "";
+        if (squares[i]){
+            return;
+        }
 
-  return (
-      <div style={{ padding: 20 }}>
-          <h1>Counter</h1>
-          <p>Count is: {count}</p>
+        if(xIsNext) {
+            nextSquares[i] = "X";
 
-          <button onClick={() => setCount(prev => prev + 1)}>
-              Increment
-          </button>
+        } else {
+            nextSquares[i] = "O";
 
-          <button onClick={() => setCount(prev => prev - 1)}>
-              Decrement
-          </button>
+        }
+        setXIsNext(!xIsNext);
+        setSquares(nextSquares);
+    }
 
+    return <>
+        <div className="board-row">
+            <Square value={squares[0]} onSquareClick={()=>handleClick(0)} />
+            <Square value={squares[1]} onSquareClick={()=>handleClick(1)} />
+            <Square value={squares[2]} onSquareClick={()=>handleClick(2)} />
+        </div>
+        <div className="board-row">
+            <Square value={squares[3]} onSquareClick={()=>handleClick(3)} />
+            <Square value={squares[4]} onSquareClick={()=>handleClick(4)} />
+            <Square value={squares[5]} onSquareClick={()=>handleClick(5)} />
+        </div>
+        <div className="board-row">
+            <Square value={squares[6]} onSquareClick={()=>handleClick(6)} />
+            <Square value={squares[7]} onSquareClick={()=>handleClick(7)} />
+            <Square value={squares[8]} onSquareClick={()=>handleClick(8)} />
+        </div>
+    </>;
+}
 
-          <button onClick={() => setCount(0)}>
-              RESET ALL
-          </button>
-          <p>{message}</p>
-          <input type="number" value={inputValue} onChange={e => setInputValue(e.target.value)}/>
-          <button onClick={() => setCount(Number(inputValue))}>Set Count</button>
-      </div>
-  );
+function Square({value, onSquareClick}) {
+
+    return <>
+        <button
+            className="square"
+            onClick={onSquareClick}
+        >
+            {value}
+        </button>
+    </>;
 }
